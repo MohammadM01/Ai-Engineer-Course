@@ -1,4 +1,4 @@
-````markdown
+
 # 🚀 AI Engineer Course Setup Guide
 
 <div align="center">
@@ -533,4 +533,3 @@ Your development environment is fully configured.
 You are now ready to begin **Week 1** of the **AI Engineer Course**.
 
 **Happy Coding! 🚀**
-````
