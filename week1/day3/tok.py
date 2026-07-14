@@ -20,11 +20,10 @@ prompts = [prompt1, prompt2,prompt3]
 for prompt in prompts:
     message = {"role": role, "content": prompt}
     messages = [message]
-    response = client.chat.completions.create(model=model, messages=messages, max_tokens=500)
+    response = client.chat.completions.create(model=model, messages=messages, max_tokens=50)
     usage = response.usage
     print(
         f"Prompt: {prompt} --> my_token : {usage.prompt_tokens}, completion_tokens : {usage.completion_tokens}, total_tokens : {usage.total_tokens}, Finish Reason : {response.choices[0].finish_reason}\n"
     )
-
 
 # print(response.choices[0].message.content)
