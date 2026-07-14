@@ -1,3 +1,5 @@
+week1/day4/json_pydantic.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -29,7 +31,6 @@ MANIFEST
 # PyInstaller
 #   Usually these files are written by a python script from a template
 #   before PyInstaller builds the exe, so as to inject date/other infos into it.
-resume_extractor.py
 
 *.manifest
 *.spec
