@@ -1,4 +1,4 @@
-# 📅 Day 6 - Prompt Engineering
+w# 📅 Day 6 - Prompt Engineering
 
 ## 📖 What I Learned
 
