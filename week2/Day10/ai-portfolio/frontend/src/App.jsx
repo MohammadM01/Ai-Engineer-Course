@@ -343,6 +343,7 @@ Ask me anything about:
               style={{
                 background: "grey",
                 color: "white",
+                text: "white",
               }}
               onClick={sendMessage}
               disabled={loading}
