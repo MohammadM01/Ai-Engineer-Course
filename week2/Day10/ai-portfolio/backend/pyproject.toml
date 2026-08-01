@@ -8,6 +8,7 @@ dependencies = [
     "fastapi[standard]>=0.141.1",
     "groq>=1.6.0",
     "pylance>=9.0.0",
+    "pypdf>=6.14.2",
     "python-dotenv>=1.2.2",
     "uvicorn>=0.52.0",
 ]
