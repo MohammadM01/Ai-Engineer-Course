@@ -679,3 +679,8 @@ button:hover {
 .linkedin-btn{
     background:#0077b5;
 }
+
+.bubble p{
+    white-space: pre-wrap;
+    line-height: 1.2;
+}

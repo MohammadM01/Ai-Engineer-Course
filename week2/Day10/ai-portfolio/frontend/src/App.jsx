@@ -132,6 +132,7 @@ Ask me anything about:
         .replace(/\*/g, "")
         .replace(/#{1,6}\s?/g, "")
         .replace(/`/g, "");
+        
       setMessages((prev) => {
         const temp = [...prev];
 
