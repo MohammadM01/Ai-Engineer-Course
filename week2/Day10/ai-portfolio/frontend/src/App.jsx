@@ -108,7 +108,8 @@ Ask me anything about:
       },
       {
         role: "ai",
-        text: "Thinking...",
+        text: "",
+        loading: true,
       },
     ]);
 
@@ -140,8 +141,9 @@ Ask me anything about:
         const temp = [...prev];
 
         temp[temp.length - 1] = {
-          ...temp[temp.length - 1],
+          role: "ai",
           text: answer,
+          loading: false,
         };
 
         return temp;
@@ -299,7 +301,22 @@ Ask me anything about:
                       )}
                   </div>
 
-                  <p>{message.text}</p>
+                  {message.loading ? (
+                    <div className="typing">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  ) : (
+                    <p>
+                      {message.text}
+                      {loading &&
+                        index === messages.length - 1 &&
+                        message.role === "ai" && (
+                          <span className="cursor">|</span>
+                        )}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
@@ -309,6 +326,7 @@ Ask me anything about:
 
           <section className="input-area">
             <input
+              ref={inputRef}
               type="text"
               value={question}
               placeholder="Ask anything about Mohammad..."
@@ -321,8 +339,23 @@ Ask me anything about:
               }}
             />
 
-            <button onClick={sendMessage} disabled={loading}>
-              {loading ? "Thinking..." : "Send"}
+            <button
+              style={{
+                background: "grey",
+                color: "white",
+              }}
+              onClick={sendMessage}
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="typing ">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              ) : (
+                "Send"
+              )}
             </button>
           </section>
         </main>
