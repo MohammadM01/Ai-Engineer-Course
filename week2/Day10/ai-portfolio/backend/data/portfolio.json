@@ -1,0 +1,130 @@
+{
+  "name": "Mohammad Mulla",
+  "title": "Software Engineer",
+  "summary": "Software Engineer specializing in Full Stack Development, Artificial Intelligence, and scalable web applications. Passionate about solving real-world problems using modern technologies.",
+
+  "contact": {
+    "phone": "+91-8983228237",
+    "email": "mullamohammad123@gmail.com",
+    "location": "Bhiwandi, Mumbai, India",
+    "linkedin": "https://linkedin.com/in/mohammadm01",
+    "github": "https://github.com/MohammadM01",
+    "leetcode": "https://leetcode.com/u/MohammadM01/"
+  },
+
+  "education": {
+    "degree": "Bachelor of Technology",
+    "branch": "Computer Engineering",
+    "college": "Shivajirao S. Jondhale College of Engineering, Dombivli",
+    "cgpa": "7.5/10",
+    "duration": "November 2022 - May 2026"
+  },
+
+  "experience": [
+    {
+      "company": "DataMatex Technologies",
+      "role": "Software Developer Intern",
+      "duration": "December 2025 - March 2026",
+      "responsibilities": [
+        "Developed responsive business websites using modern web technologies.",
+        "Improved customer engagement with better UI and UX.",
+        "Optimized website performance and reduced loading time.",
+        "Implemented responsive layouts for desktop and mobile devices."
+      ]
+    }
+  ],
+
+  "skills": {
+    "programming_languages": [
+      "Java",
+      "Python",
+      "C++",
+      "JavaScript",
+      "SQL"
+    ],
+    "frontend": [
+      "React.js",
+      "Next.js",
+      "HTML",
+      "CSS",
+      "Tailwind CSS"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "FastAPI"
+    ],
+    "databases": [
+      "MongoDB",
+      "MySQL",
+      "PostgreSQL"
+    ],
+    "ai_ml": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "RAG",
+      "LangChain",
+      "LangGraph",
+      "Prompt Engineering"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+      "Linux",
+      "VS Code"
+    ]
+  },
+
+  "projects": [
+    {
+      "name": "CryptGuard",
+      "description": "Privacy-Preserving Encrypted Traffic Threat Detection System.",
+      "technologies": [
+        "C++",
+        "Python",
+        "Machine Learning",
+        "Deep Packet Inspection",
+        "TLS",
+        "JA3"
+      ]
+    },
+    {
+      "name": "ChainCred",
+      "description": "Blockchain-based Decentralized Verifiable Credential Platform.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Solidity",
+        "opBNB",
+        "BNB Greenfield"
+      ]
+    },
+    {
+      "name": "Civic Eye",
+      "description": "AI-powered Civic Issue Reporting and Resolution Platform.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "YOLOv8",
+        "Blockchain",
+        "REST API"
+      ]
+    }
+  ],
+
+  "achievements": [
+    "1st Position - Smart India Hackathon Internal",
+    "1st Runner-Up - National Level Hackathon",
+    "Honorable Mention - Global BNB Hackathon"
+  ],
+
+  "profiles": {
+    "github": "https://github.com/MohammadM01",
+    "linkedin": "https://linkedin.com/in/mohammadm01",
+    "leetcode": "https://leetcode.com/u/MohammadM01/"
+  }
+}

@@ -44,6 +44,7 @@ Ask me anything about:
   ]);
 
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     document.body.className = theme;
@@ -57,6 +58,8 @@ Ask me anything about:
     messagesEndRef.current?.scrollIntoView({
       behavior: "smooth",
     });
+
+    inputRef.current?.focus();
   }, [messages]);
 
   async function createChat() {
@@ -132,7 +135,7 @@ Ask me anything about:
         .replace(/\*/g, "")
         .replace(/#{1,6}\s?/g, "")
         .replace(/`/g, "");
-        
+
       setMessages((prev) => {
         const temp = [...prev];
 
@@ -181,14 +184,15 @@ Ask me anything about:
           <p className="stack">React • Java • Python • FastAPI • MongoDB</p>
 
           <div className="socials">
-            <a
-              href="/Mohammad_Mulla_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
+            <button
               className="resume-btn"
+              onClick={() =>
+                window.open("/Mohammad_Mulla_Resume_f.pdf", "_blank")
+              }
+              title="Resume"
             >
               <FaFilePdf />
-            </a>
+            </button>
 
             <a
               href="https://github.com/MohammadM01"

@@ -1,63 +1,42 @@
-import os
-import json
-from dotenv import load_dotenv
-from groq import Groq
-from groq.types.chat import ChatCompletionMessageParam
-from prompt import system_prompt
+import uuid
 
-load_dotenv()
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
-api_key = os.getenv("GROQ_API_KEY")
+from chat import generate
 
-if not api_key:
-    raise ValueError("API Key not found")
+app = FastAPI()
 
-client = Groq(api_key=api_key)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-model = "llama-3.3-70b-versatile"
 
-with open("profile.json", "r", encoding="utf-8") as file:
-    profile = json.load(file)
+@app.get("/")
+def home():
 
-profile_data = json.dumps(profile, indent=2)
-
-messages: list[ChatCompletionMessageParam] = [
-    {
-        "role": "system",
-        "content": system_prompt + "\n\nCandidate Information:\n\n" + profile_data
+    return {
+        "message": "AI Portfolio Backend is Running"
     }
-]
 
-while True:
 
-    question = input("You : ")
+@app.get("/new-chat")
+def new_chat():
 
-    if question.lower() == "exit":
-        break
+    return {
+        "chat_id": str(uuid.uuid4())
+    }
 
-    messages.append(
-        {
-            "role": "user",
-            "content": question
-        }
-    )
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages
-    )
+@app.get("/chat")
+def chat(chat_id: str, question: str):
 
-    answer = response.choices[0].message.content
-
-    if answer is None:
-        answer = ""
-
-    print("\nAI :", answer)
-    print()
-
-    messages.append(
-        {
-            "role": "assistant",
-            "content": answer
-        }
+    return StreamingResponse(
+        generate(chat_id, question),
+        media_type="text/plain"
     )
