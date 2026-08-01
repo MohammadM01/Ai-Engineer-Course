@@ -762,3 +762,296 @@ button:hover {
   white-space: pre-wrap;
   line-height: 1.2;
 }
+
+/* ==========================================
+   DESKTOP DEFAULT UTILITIES (> 900px)
+   ========================================== */
+.mobile-header {
+  display: none;
+}
+
+.mobile-backdrop {
+  display: none;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE STYLES (<= 900px)
+   ========================================== */
+@media (max-width: 900px) {
+  .app {
+    padding: 0;
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .portfolio-layout {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 16px;
+    border-right: none;
+    border-bottom: 2px solid #ece4d8;
+    position: relative;
+    z-index: 100;
+  }
+
+  .dark .sidebar {
+    border-bottom: 1px solid #3b4254;
+  }
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobile-profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .mobile-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #cdb6ff;
+  }
+
+  .mobile-profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-name {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: #3d352c;
+    line-height: 1.2;
+  }
+
+  .dark .mobile-name {
+    color: white;
+  }
+
+  .mobile-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+    line-height: 1.2;
+  }
+
+  .dark .mobile-role {
+    color: #bbb;
+  }
+
+  .mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-actions button {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+  }
+
+  .mobile-profile-toggle {
+    background: var(--purple, #e8ddfb);
+    color: #6958a4;
+    border: 2px solid var(--purple-border, #b89de6);
+  }
+
+  .dark .mobile-profile-toggle {
+    background: #5b4b94;
+    color: white;
+    border-color: #8c78d4;
+  }
+
+  /* Expandable profile drawer / modal on mobile */
+  .sidebar-content {
+    display: none;
+  }
+
+  .sidebar.mobile-open .sidebar-content {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fffdf8;
+    padding: 24px 20px;
+    border-bottom: 2px solid #ece4d8;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideDown 0.25s ease-out forwards;
+  }
+
+  .dark .sidebar.mobile-open .sidebar-content {
+    background: #272b36;
+    border-bottom: 1px solid #3b4254;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    z-index: 90;
+  }
+
+  .main {
+    padding: 16px 12px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-card {
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-radius: 16px;
+  }
+
+  .hero-card h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .hero-card p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .quick-actions {
+    padding: 0 4px 12px;
+    gap: 8px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .quick-actions button {
+    min-width: 110px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 14px;
+    scroll-snap-align: start;
+  }
+
+  .messages {
+    gap: 12px;
+    padding-right: 4px;
+  }
+
+  .bubble {
+    max-width: 92%;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+
+  .bubble p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .input-area {
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .input-area input {
+    height: 50px;
+    font-size: 16px;
+    padding: 0 16px;
+    border-radius: 14px;
+  }
+
+  .input-area button {
+    width: 95px;
+    height: 50px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Extra small mobile screens (<= 480px) */
+@media (max-width: 480px) {
+  .hero-card h2 {
+    font-size: 20px;
+  }
+
+  .hero-card p {
+    font-size: 14px;
+  }
+
+  .quick-actions button {
+    min-width: 95px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .bubble {
+    max-width: 95%;
+    padding: 12px 14px;
+  }
+
+  .bubble p {
+    font-size: 14px;
+  }
+
+  .mobile-name {
+    font-size: 16px;
+  }
+
+  .mobile-role {
+    font-size: 12px;
+  }
+
+  .input-area button {
+    width: 80px;
+    font-size: 14px;
+  }
+}
+

@@ -16,11 +16,13 @@ import {
   FaAward,
   FaEnvelope,
   FaCopy,
+  FaTimes,
 } from "react-icons/fa";
 
 const API = import.meta.env.VITE_API_URL;
 function App() {
   const [theme, setTheme] = useState("light");
+  const [showMobileProfile, setShowMobileProfile] = useState(false);
 
   const [chatId, setChatId] = useState("");
 
@@ -171,70 +173,119 @@ Ask me anything about:
       <div className="portfolio-layout">
         {/* ---------- LEFT SIDEBAR ---------- */}
 
-        <aside className="sidebar">
-          <div className="logo">
-            <h1>AI Portfolio</h1>
+        <aside className={`sidebar ${showMobileProfile ? "mobile-open" : ""}`}>
+          <div className="mobile-header">
+            <div
+              className="mobile-profile-summary"
+              onClick={() => setShowMobileProfile(!showMobileProfile)}
+            >
+              <img src={profile} alt="Mohammad" className="mobile-avatar" />
+              <div className="mobile-profile-info">
+                <h3 className="mobile-name">Mohammad Mulla</h3>
+                <p className="mobile-role">Software Engineer</p>
+              </div>
+            </div>
 
-            <p>Mohammad Mulla</p>
+            <div className="mobile-actions">
+              <button
+                className="mobile-profile-toggle"
+                onClick={() => setShowMobileProfile(!showMobileProfile)}
+                title="View Profile Details"
+                aria-label="Toggle profile details"
+              >
+                {showMobileProfile ? <FaTimes /> : <FaUser />}
+              </button>
+
+              <button
+                className="theme-btn"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+              >
+                {theme === "light" ? <FaMoon /> : <FaSun />}
+              </button>
+
+              <button
+                className="clear-btn"
+                onClick={clearChat}
+                aria-label="Clear chat"
+              >
+                <FaTrash />
+              </button>
+            </div>
           </div>
 
-          <img src={profile} alt="Mohammad" className="profile-photo" />
+          <div className="sidebar-content">
+            <div className="logo">
+              <h1>AI Portfolio</h1>
 
-          <h2 className="name">Mohammad Mulla</h2>
+              <p>Mohammad Mulla</p>
+            </div>
 
-          <p className="role">Software Engineer</p>
+            <img src={profile} alt="Mohammad" className="profile-photo" />
 
-          <p className="stack">React • Java • Python • FastAPI • MongoDB</p>
+            <h2 className="name">Mohammad Mulla</h2>
 
-          <div className="socials">
-            <button
-              className="resume-btn"
-              onClick={() =>
-                window.open("/Mohammad_Mulla_Resume_f.pdf", "_blank")
-              }
-              title="Resume"
-            >
-              <FaFilePdf />
-            </button>
+            <p className="role">Software Engineer</p>
 
-            <a
-              href="https://github.com/MohammadM01"
-              target="_blank"
-              rel="noreferrer"
-              className="github-btn"
-            >
-              <FaGithub />
-            </a>
+            <p className="stack">React • Java • Python • FastAPI • MongoDB</p>
 
-            <a
-              href="https://leetcode.com/u/MohammadM01/"
-              target="_blank"
-              rel="noreferrer"
-              className="leetcode-btn"
-            >
-              <SiLeetcode />
-            </a>
+            <div className="socials">
+              <button
+                className="resume-btn"
+                onClick={() =>
+                  window.open("/Mohammad_Mulla_Resume_f.pdf", "_blank")
+                }
+                title="Resume"
+              >
+                <FaFilePdf />
+              </button>
 
-            <a
-              href="https://linkedin.com/in/mohammadm01"
-              target="_blank"
-              rel="noreferrer"
-              className="linkedin-btn"
-            >
-              <FaLinkedin />
-            </a>
-          </div>
+              <a
+                href="https://github.com/MohammadM01"
+                target="_blank"
+                rel="noreferrer"
+                className="github-btn"
+              >
+                <FaGithub />
+              </a>
 
-          <div className="theme-buttons">
-            <button className="theme-btn" onClick={toggleTheme}>
-              {theme === "light" ? <FaMoon /> : <FaSun />}
-            </button>
+              <a
+                href="https://leetcode.com/u/MohammadM01/"
+                target="_blank"
+                rel="noreferrer"
+                className="leetcode-btn"
+              >
+                <SiLeetcode />
+              </a>
 
-            <button className="clear-btn" onClick={clearChat}>
-              <FaTrash />
-            </button>
+              <a
+                href="https://linkedin.com/in/mohammadm01"
+                target="_blank"
+                rel="noreferrer"
+                className="linkedin-btn"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+
+            <div className="theme-buttons">
+              <button className="theme-btn" onClick={toggleTheme}>
+                {theme === "light" ? <FaMoon /> : <FaSun />}
+              </button>
+
+              <button className="clear-btn" onClick={clearChat}>
+                <FaTrash />
+              </button>
+            </div>
           </div>
         </aside>
+
+        {showMobileProfile && (
+          <div
+            className="mobile-backdrop"
+            onClick={() => setShowMobileProfile(false)}
+          />
+        )}
 
         {/* ---------- MAIN ---------- */}
 
