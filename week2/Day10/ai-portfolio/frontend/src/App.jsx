@@ -18,6 +18,7 @@ import {
   FaCopy,
 } from "react-icons/fa";
 
+const API = import.meta.env.VITE_API_URL;
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -63,7 +64,7 @@ Ask me anything about:
   }, [messages]);
 
   async function createChat() {
-    const response = await fetch("http://127.0.0.1:8000/new-chat");
+    const response = await fetch(`${API}/new-chat`);
 
     const data = await response.json();
 
@@ -116,7 +117,7 @@ Ask me anything about:
     setQuestion("");
 
     const response = await fetch(
-      `http://127.0.0.1:8000/chat?chat_id=${chatId}&question=${encodeURIComponent(userQuestion)}`,
+      `${API}/chat?chat_id=${chatId}&question=${encodeURIComponent(userQuestion)}`,
     );
 
     const reader = response.body.getReader();
