@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import profile from "./assets/profile.png";
+import MarkdownRenderer from "./components/MarkdownRenderer";
+import ProjectCards from "./components/ProjectCards";
+
 import { SiLeetcode } from "react-icons/si";
 import {
   FaMoon,
@@ -17,6 +20,7 @@ import {
   FaEnvelope,
   FaCopy,
   FaTimes,
+  FaLightbulb,
 } from "react-icons/fa";
 
 const API = import.meta.env.VITE_API_URL;
@@ -37,12 +41,13 @@ function App() {
 
 Ask me anything about:
 
-• About
-• Skills
-• Projects
-• Education
-• Experience
-• Achievements`,
+• **About** Mohammad's background
+• **Skills** & Technical Stack
+• **Projects** & Architecture
+• **Education** & Degrees
+• **Experience** & Internships
+• **Achievements** & Hackathons`,
+      showProjects: false,
     },
   ]);
 
@@ -83,12 +88,13 @@ Ask me anything about:
 
 Ask me anything about:
 
-• About
-• Skills
-• Projects
-• Education
-• Experience
-• Achievements`,
+• **About** Mohammad's background
+• **Skills** & Technical Stack
+• **Projects** & Architecture
+• **Education** & Degrees
+• **Experience** & Internships
+• **Achievements** & Hackathons`,
+        showProjects: false,
       },
     ]);
 
@@ -103,6 +109,14 @@ Ask me anything about:
 
     setLoading(true);
 
+    const qLower = userQuestion.toLowerCase();
+    const isProjectQuery =
+      qLower.includes("project") ||
+      qLower.includes("cryptguard") ||
+      qLower.includes("chaincred") ||
+      qLower.includes("civic eye");
+
+
     setMessages((prev) => [
       ...prev,
       {
@@ -113,6 +127,8 @@ Ask me anything about:
         role: "ai",
         text: "",
         loading: true,
+        userQuery: userQuestion,
+        showProjects: isProjectQuery,
       },
     ]);
 
@@ -134,16 +150,13 @@ Ask me anything about:
       if (done) break;
 
       answer += decoder.decode(value);
-      answer = answer
-        .replace(/\*\*/g, "")
-        .replace(/\*/g, "")
-        .replace(/#{1,6}\s?/g, "")
-        .replace(/`/g, "");
 
       setMessages((prev) => {
         const temp = [...prev];
+        const lastIdx = temp.length - 1;
 
-        temp[temp.length - 1] = {
+        temp[lastIdx] = {
+          ...temp[lastIdx],
           role: "ai",
           text: answer,
           loading: false,
@@ -166,6 +179,46 @@ Ask me anything about:
 
   function toggleTheme() {
     setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  function getFollowUpChips(aiMsg) {
+    const q = (aiMsg.userQuery || "").toLowerCase();
+    const t = (aiMsg.text || "").toLowerCase();
+
+    if (q.includes("project") || aiMsg.showProjects || t.includes("cryptguard")) {
+      return [
+        "What are Mohammad's technical skills?",
+        "Tell me about his experience",
+        "How can I contact Mohammad?",
+      ];
+    }
+    if (q.includes("skill") || t.includes("python") || t.includes("react")) {
+      return [
+        "Tell me about his projects",
+        "Where did Mohammad study?",
+        "Tell me about his hackathon awards",
+      ];
+    }
+    if (q.includes("education") || t.includes("college") || t.includes("bachelor")) {
+      return [
+        "Tell me about his hackathon awards",
+        "What projects did he build?",
+        "How can I contact Mohammad?",
+      ];
+    }
+    if (q.includes("contact") || t.includes("email") || t.includes("linkedin")) {
+      return [
+        "Show Mohammad's projects",
+        "What are his technical skills?",
+        "Tell me about his experience",
+      ];
+    }
+
+    return [
+      "Tell me about his projects",
+      "What are Mohammad's skills?",
+      "How can I contact Mohammad?",
+    ];
   }
 
   return (
@@ -343,10 +396,12 @@ Ask me anything about:
                     </strong>
 
                     {message.role === "ai" &&
-                      message.text !== "Thinking..." && (
+                      message.text !== "Thinking..." &&
+                      message.text && (
                         <button
                           className="copy-btn"
                           onClick={() => copyText(message.text)}
+                          title="Copy text"
                         >
                           <FaCopy />
                         </button>
@@ -360,21 +415,53 @@ Ask me anything about:
                       <span></span>
                     </div>
                   ) : (
-                    <p>
-                      {message.text}
+                    <div className="bubble-body">
+                      {message.role === "ai" ? (
+                        <MarkdownRenderer content={message.text} />
+                      ) : (
+                        <p>{message.text}</p>
+                      )}
+
+                      {message.showProjects && <ProjectCards />}
+
+
                       {loading &&
                         index === messages.length - 1 &&
                         message.role === "ai" && (
                           <span className="cursor">|</span>
                         )}
-                    </p>
+                    </div>
                   )}
+
+                  {/* Smart Follow-up Chips for AI Messages */}
+                  {message.role === "ai" &&
+                    !message.loading &&
+                    index === messages.length - 1 && (
+                      <div className="follow-up-section">
+                        <div className="follow-up-label">
+                          <FaLightbulb style={{ color: "#eab308", marginRight: 5 }} />
+                          <span>Suggested follow-ups:</span>
+                        </div>
+                        <div className="follow-up-chips">
+                          {getFollowUpChips(message).map((chip, cIdx) => (
+                            <button
+                              key={cIdx}
+                              className="follow-up-chip"
+                              onClick={() => quickAsk(chip)}
+                            >
+                              {chip}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                 </div>
               </div>
             ))}
 
             <div ref={messagesEndRef}></div>
           </section>
+
 
           <section className="input-area">
             <input

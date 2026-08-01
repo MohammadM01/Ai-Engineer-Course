@@ -1055,3 +1055,371 @@ button:hover {
   }
 }
 
+/* ==========================================
+   MARKDOWN RENDERER & CODE BLOCKS STYLING
+   ========================================== */
+.markdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.md-paragraph {
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.md-bullet-item {
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  list-style-type: disc;
+}
+
+.md-inline-code {
+  background: #f1f5f9;
+  color: #6366f1;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.dark .md-inline-code {
+  background: #1e293b;
+  color: #818cf8;
+}
+
+.md-spacer {
+  height: 6px;
+}
+
+.code-block-container {
+  margin: 12px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #1e1e2e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark .code-block-container {
+  border-color: #334155;
+  background: #0f172a;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #181825;
+  padding: 8px 14px;
+  border-bottom: 1px solid #313244;
+}
+
+.dark .code-block-header {
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.code-block-lang {
+  color: #cdd6f4;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+}
+
+.code-copy-btn {
+  background: #313244;
+  color: #cdd6f4;
+  border: 1px solid #45475a;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.code-copy-btn:hover {
+  background: #45475a;
+  transform: none;
+}
+
+.code-block-pre {
+  padding: 14px 16px;
+  margin: 0;
+  overflow-x: auto;
+  color: #a6adc8;
+  font-family: "Fira Code", Consolas, Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+/* ==========================================
+   PROJECT CARDS STYLING
+   ========================================== */
+.project-cards-wrapper {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-cards-header {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.dark .project-cards-header {
+  color: #818cf8;
+}
+
+.project-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-card {
+  background: #ffffff;
+  border: 2px solid #e0e7ff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.06);
+  transition: all 0.25s ease;
+}
+
+.project-card:hover {
+  border-color: #a5b4fc;
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.12);
+  transform: translateY(-2px);
+}
+
+.dark .project-card {
+  background: #252a37;
+  border-color: #374151;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .project-card:hover {
+  border-color: #6366f1;
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.project-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-icon {
+  font-size: 22px;
+  background: #f3e8ff;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dark .project-icon {
+  background: #3b2d54;
+}
+
+.project-name {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.dark .project-name {
+  color: #f8fafc;
+}
+
+.project-tagline {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.dark .project-tagline {
+  color: #94a3b8;
+}
+
+.project-badge {
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.dark .project-badge {
+  background: #3730a3;
+  color: #c7d2fe;
+}
+
+.project-description {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.dark .project-description {
+  color: #cbd5e1;
+}
+
+.project-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tech-pill {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.dark .tech-pill {
+  background: #1e293b;
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+.project-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.proj-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.proj-github {
+  background: #1e293b;
+  color: white;
+}
+
+.proj-github:hover {
+  background: #0f172a;
+  transform: translateY(-2px);
+}
+
+.proj-demo {
+  background: #4f46e5;
+  color: white;
+}
+
+.proj-demo:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+
+
+
+/* ==========================================
+   SMART FOLLOW-UP CHIPS STYLING
+   ========================================== */
+.follow-up-section {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dark .follow-up-section {
+  border-top-color: #334155;
+}
+
+.follow-up-label {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  font-family: "Poppins", sans-serif;
+}
+
+.dark .follow-up-label {
+  color: #94a3b8;
+}
+
+.follow-up-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.follow-up-chip {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1.5px solid #bbf7d0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.follow-up-chip:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+  transform: translateY(-2px);
+}
+
+.dark .follow-up-chip {
+  background: #14532d;
+  color: #86efac;
+  border-color: #166534;
+}
+
+.dark .follow-up-chip:hover {
+  background: #166534;
+  border-color: #22c55e;
+}
+
+
